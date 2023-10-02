@@ -1,0 +1,49 @@
+.card {
+  padding: 1rem;
+  background-color: var(--very-light-gray);
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.score-container {
+  display: flex;
+  flex-direction: column;
+  /* align-content: center; */
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--light-gray);
+  border-radius: 4px;
+}
+
+.score-button {
+  color: var(--grayish-blue);
+}
+
+.score-value {
+  color: var(--moderate-blue);
+}
+
+.reply-button {
+  color: var(--moderate-blue);
+}
+
+.details-row {
+  display: flex;
+}
+
+.text-content {
+  color: var(--dark-blue);
+}
+
+.child-padding {
+  padding-left: 1rem;
+}

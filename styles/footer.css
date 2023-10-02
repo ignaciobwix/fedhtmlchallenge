@@ -1,0 +1,7 @@
+.comment-footer {
+  display: flex;
+  padding: 1rem;
+  background-color: var(--very-light-gray);
+  align-items: center;
+  justify-content: space-between;
+}

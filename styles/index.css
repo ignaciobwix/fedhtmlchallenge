@@ -1,0 +1,38 @@
+/* https://chat.openai.com/share/4b95c865-bc77-401e-8879-53dd97d0653b */
+:root {
+  --mobile-width: 375px;
+  --desktop-width: 1440px;
+
+  --moderate-blue: hsl(238, 40%, 52%);
+  --soft-red: hsl(358, 79%, 66%);
+  --light-grayish-blue: hsl(239, 57%, 85%);
+  --pale-red: hsl(357, 100%, 86%);
+
+  --dark-blue: hsl(212, 24%, 26%);
+  --grayish-blue: hsl(211, 10%, 45%);
+  --light-gray: hsl(223, 19%, 93%);
+  --very-light-gray: hsl(228, 33%, 97%);
+  --white: hsl(0, 0%, 100%);
+
+  --body-font-size: 16px;
+
+  --font-family: "Rubik", sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+}
+
+button {
+  background-color: var(--soft-red);
+  color: var(--white);
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--body-font-size);
+  font-weight: var(--font-weight-normal);
+  background-color: var(--light-gray);
+}
