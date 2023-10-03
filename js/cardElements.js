@@ -1,12 +1,65 @@
 import createElement from "./createElement.js";
+import deepFilterComments from "./deepFilterComments.js";
+import render from "./render.js";
+export const getActionsPanel = (id, appState, isCurrentUser) => {
+  const actions = createElement(`<div class="post-actions"></div>`);
 
-export const getReplyButton = (id, appState) => {
-  const button = createElement(`<button class="reply-button">reply</button>`);
-  button.addEventListener("click", () => {
+  if (isCurrentUser) {
+    const editButton = createElement(
+      `<button class="action-button">Edit</button>`
+    );
+    editButton.addEventListener("click", () => {
+      appState.selectedPostId = id;
+    });
+
+    const deteleButton = createElement(
+      `<button class="action-button delete-button">Detele</button>`
+    );
+
+    deteleButton.addEventListener("click", function (event) {
+      event.preventDefault();
+      // !inline immutable chad chunk doens't work :/
+      alert("pressed");
+
+      // render({
+      //   ...appState,
+      //   selectedPostId: id,
+      //   data: {
+      //     ...appState.data,
+      //     comments: appState.data.comments.filter(
+      //       (comment) => comment.id !== id
+      //     ),
+      //   },
+      // });
+
+      appState.selectedPostId = id;
+      appState.data.comments = deepFilterComments(
+        appState.data.comments,
+        "id",
+        id
+      );
+
+      render(appState);
+    });
+
+    actions.appendChild(deteleButton);
+    actions.appendChild(editButton);
+
+    return actions;
+  }
+
+  const replyButton = createElement(
+    `<button class="action-button">Reply</button>`
+  );
+
+  replyButton.addEventListener("click", () => {
     appState.selectedPostId = id;
     document.querySelector(".comment-footer").style.display = "flex";
   });
-  return button;
+
+  actions.appendChild(replyButton);
+
+  return actions;
 };
 
 export const getScorePanel = (initialScore, id) => {

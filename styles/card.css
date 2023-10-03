@@ -6,6 +6,12 @@
   width: 100%;
 }
 
+@media screen and (max-width: 768px) {
+  .card {
+    flex-direction: column-reverse;
+  }
+}
+
 .comment-header {
   display: flex;
   justify-content: space-between;
@@ -45,6 +51,12 @@
   margin-right: 1rem;
 }
 
+@media screen and (max-width: 768px) {
+  .score-container {
+    flex-direction: row;
+  }
+}
+
 .score-button {
   color: var(--grayish-blue);
 }
@@ -53,8 +65,18 @@
   color: var(--moderate-blue);
 }
 
-.reply-button {
+.post-actions {
+  display: flex;
+}
+
+.action-button {
+  font-weight: bold;
   color: var(--moderate-blue);
+}
+
+.delete-button {
+  font-weight: bold;
+  color: var(--soft-red);
 }
 
 .text-content {

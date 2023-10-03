@@ -1,6 +1,6 @@
 import {
+  getActionsPanel,
   getCommentContent,
-  getReplyButton,
   getScorePanel,
   getUserDetails,
 } from "./cardElements.js";
@@ -19,16 +19,22 @@ export default function getCommentCard(comment, appState) {
     },
     replies,
   } = comment;
-
   const { currentUser } = appState.data;
   const isCurrentUser = currentUser?.username === username;
 
+  const componentState = {
+    commentHeader: createElement(`<div class="comment-header"></div>`),
+    actions: getActionsPanel(id, appState, isCurrentUser),
+    userSection: getUserDetails(username, webp, createdAt, isCurrentUser),
+    colWrapper: createElement(`<div></div>`),
+  };
+
   const commentHeader = createElement(`<div class="comment-header"></div>`);
-  const replyButton = getReplyButton(id, appState);
+  const actions = getActionsPanel(id, appState, isCurrentUser);
   const userSection = getUserDetails(username, webp, createdAt, isCurrentUser);
 
   commentHeader.appendChild(userSection);
-  commentHeader.appendChild(replyButton);
+  commentHeader.appendChild(actions);
 
   const commentContent = getCommentContent(content);
   const colWrapper = createElement(`<div></div>`);
