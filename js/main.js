@@ -1,4 +1,5 @@
 import getCommentFooter from "./components/getAddCommentFooter.js";
+import getModal from "./components/getModal.js";
 import mapComments from "./lib/mapComments.js";
 
 (async function () {
@@ -26,6 +27,7 @@ import mapComments from "./lib/mapComments.js";
       : "1px solid transparent";
   });
 
+  getModal(appState);
   mapComments(appState);
   getCommentFooter(appState);
 })();

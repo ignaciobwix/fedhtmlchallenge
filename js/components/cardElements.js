@@ -1,6 +1,5 @@
 import createElement from "../lib/createElement.js";
-import deepFilterComments from "../services/deepFilterComments.js";
-import render from "../render.js";
+
 export const getActionsPanel = (id, appState, isCurrentUser) => {
   const actions = createElement(
     `<div class="post-actions actions-area"></div>`
@@ -13,13 +12,15 @@ export const getActionsPanel = (id, appState, isCurrentUser) => {
         <span>Edit</span>
       </button>`
     );
+
     editButton.addEventListener("click", () => {
       appState.selectedPostId = id;
     });
 
     const deteleButton = createElement(
       `<button class="action-button delete-button">
-      <i class="fa-solid fa-trash"></i>        <span>Detele</span>
+        <i class="fa-solid fa-trash"></i>        
+        <span>Detele</span>
       </button>`
     );
 
@@ -38,15 +39,8 @@ export const getActionsPanel = (id, appState, isCurrentUser) => {
       //     ),
       //   },
       // });
-
       appState.selectedPostId = id;
-      appState.data.comments = deepFilterComments(
-        appState.data.comments,
-        "id",
-        id
-      );
-
-      render(appState);
+      document.querySelector("dialog").show();
     });
 
     actions.appendChild(deteleButton);

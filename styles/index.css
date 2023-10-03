@@ -55,3 +55,8 @@ body {
 i {
   margin-right: 4px;
 }
+
+/* move to file */
+.modal {
+  background-color: blue;
+}
