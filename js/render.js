@@ -1,5 +1,5 @@
-import getCommentFooter from "./getAddCommentFooter.js";
-import mapComments from "./mapComments.js";
+import getCommentFooter from "./components/getAddCommentFooter.js";
+import mapComments from "./lib/mapComments.js";
 
 export default function render(appState) {
   console.count("render");

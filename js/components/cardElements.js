@@ -1,6 +1,6 @@
-import createElement from "./createElement.js";
-import deepFilterComments from "./deepFilterComments.js";
-import render from "./render.js";
+import createElement from "../lib/createElement.js";
+import deepFilterComments from "../services/deepFilterComments.js";
+import render from "../render.js";
 export const getActionsPanel = (id, appState, isCurrentUser) => {
   const actions = createElement(
     `<div class="post-actions actions-area"></div>`

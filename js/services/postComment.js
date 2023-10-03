@@ -1,7 +1,8 @@
-import getNewPostId from "./getNewPostId.js";
-import render from "./render.js";
+import getNewPostId from "../lib/getNewPostId.js";
+import render from "../render.js";
 
 export default function postComment(event, postTextContent, appState) {
+  if (!postTextContent) return;
   event.preventDefault();
 
   const { data, selectedPostId } = appState;

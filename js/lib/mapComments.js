@@ -1,5 +1,5 @@
 import createElement from "./createElement.js";
-import getCommentCard from "./getCommentCard.js";
+import getCommentCard from "../components/getCommentCard.js";
 
 export default function mapComments(appState) {
   const { comments } = appState.data;

@@ -4,8 +4,8 @@ import {
   getUserDetails,
 } from "./cardElements.js";
 
-import appendElements from "./appendElements.js";
-import createElement from "./createElement.js";
+import appendElements from "../lib/appendElements.js";
+import createElement from "../lib/createElement.js";
 
 export default function getCommentCard(comment, appState) {
   const {

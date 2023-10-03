@@ -1,5 +1,5 @@
-import getCommentFooter from "./getAddCommentFooter.js";
-import mapComments from "./mapComments.js";
+import getCommentFooter from "./components/getAddCommentFooter.js";
+import mapComments from "./lib/mapComments.js";
 
 (async function () {
   const data = await (await fetch("../data.json")).json();

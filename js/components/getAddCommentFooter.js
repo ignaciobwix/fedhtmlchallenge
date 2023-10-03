@@ -1,7 +1,7 @@
 // !todo should be a form -> submit, prevent default, etc...
 
-import createElement from "./createElement.js";
-import postComment from "./postComment.js";
+import createElement from "../lib/createElement.js";
+import postComment from "../services/postComment.js";
 
 export default function getCommentFooter(appState) {
   const {
@@ -35,7 +35,7 @@ export default function getCommentFooter(appState) {
   });
 
   componentState.button.addEventListener("click", function (event) {
-    postComment(event, componentState.postTextContent, appState);
+    postComment(event, componentState.postTextContent.trim(), appState);
   });
 
   componentState.footer.appendChild(componentState.textarea);
