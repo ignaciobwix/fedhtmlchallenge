@@ -24,30 +24,35 @@ export default function getCommentCard(comment, appState) {
 
   const componentState = {
     card: createElement(`<div class="card"></div>`),
-    commentHeader: createElement(`<div class="comment-header"></div>`),
+    commentHeader: createElement(
+      `<div class="comment-header header-area"></div>`
+    ),
     actions: getActionsPanel(id, appState, isCurrentUser),
     userSection: getUserDetails(username, webp, createdAt, isCurrentUser),
     colWrapper: createElement(`<div></div>`),
-    commentContent: createElement(`<p class="text-content">${content}</p>`),
+    commentContent: createElement(
+      `<p class="text-content content-area">${content}</p>`
+    ),
     scorePanel: getScorePanel(score, id),
     repliesContainer: null,
   };
+  // !mmm extra node q puede estar en comment header fn
+  componentState.commentHeader.appendChild(componentState.userSection);
+  // componentState.commentHeader = appendElements(componentState.commentHeader, [
+  //   componentState.userSection,
+  //   componentState.actions,
+  // ]);
 
-  componentState.commentHeader = appendElements(componentState.commentHeader, [
-    componentState.userSection,
-    componentState.actions,
-  ]);
+  // componentState.colWrapper = appendElements(componentState.colWrapper, [
+  //   componentState.commentHeader,
+  //   componentState.commentContent,
+  // ]);
 
-  componentState.colWrapper = appendElements(componentState.colWrapper, [
-    componentState.commentHeader,
-    componentState.commentContent,
-  ]);
-
-  componentState.card = appendElements(componentState.card, [
-    componentState.scorePanel,
-    componentState.colWrapper,
-    // componentState.actions,
-  ]);
+  // componentState.card = appendElements(componentState.card, [
+  //   componentState.scorePanel,
+  //   componentState.colWrapper,
+  //   // componentState.actions,
+  // ]);
 
   if (replies?.length) {
     componentState.repliesContainer = createElement(
@@ -65,6 +70,12 @@ export default function getCommentCard(comment, appState) {
     });
   }
 
+  componentState.card = appendElements(componentState.card, [
+    componentState.scorePanel,
+    componentState.commentHeader,
+    componentState.actions,
+    componentState.commentContent,
+  ]);
   return componentState.card;
 }
 

@@ -2,7 +2,9 @@ import createElement from "./createElement.js";
 import deepFilterComments from "./deepFilterComments.js";
 import render from "./render.js";
 export const getActionsPanel = (id, appState, isCurrentUser) => {
-  const actions = createElement(`<div class="post-actions"></div>`);
+  const actions = createElement(
+    `<div class="post-actions actions-area"></div>`
+  );
 
   if (isCurrentUser) {
     const editButton = createElement(
@@ -54,7 +56,7 @@ export const getActionsPanel = (id, appState, isCurrentUser) => {
 
   replyButton.addEventListener("click", () => {
     appState.selectedPostId = id;
-    document.querySelector(".comment-footer").style.display = "flex";
+    document.querySelector(".comment-footer").style.display = "grid";
   });
 
   actions.appendChild(replyButton);
@@ -87,7 +89,9 @@ export const getScorePanel = (initialScore, id) => {
     `<div class="score-value" id='score-${id}'>${initialScore}</div>`
   );
 
-  const container = createElement(`<div class="score-container"></div>`);
+  const container = createElement(
+    `<div class="score-container score-area"></div>`
+  );
 
   container.appendChild(sumButton);
   container.appendChild(scoreDisplay);
@@ -105,7 +109,9 @@ export const getUserDetails = (
   return createElement(`
     <div class="user-details">
         <img class="post-profile-picture" src=${userImage} alt=${userName}/>
-        <h3 class="user-name">${userName} ${isCurrentUser && "(you)"} </h3>
+        <h3 class="user-name">${userName} ${
+    isCurrentUser ? '<span class="you-label">you</span>' : ""
+  } </h3>
         <span class="time-stamp">${timeStamp}</span>
     </div>`);
 };

@@ -1,9 +1,42 @@
 .comment-footer {
   display: none;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "profile-picture-area textarea-area send-button-area";
   padding: 1rem;
   background-color: var(--very-light-gray);
   align-items: center;
   justify-content: space-between;
+  height: 10vh;
+}
+@media screen and (max-width: 768px) {
+  .comment-footer {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "textarea-area textarea-area textarea-area"
+      "profile-picture-area- gap send-button-area";
+  }
+}
+
+.profile-picture-area {
+  height: 100%;
+  grid-area: profile-picture-area;
+}
+
+.textarea-area {
+  height: 100%;
+  grid-area: textarea-area;
+}
+
+.send-button-area {
+  height: 100%;
+  grid-area: send-button-area;
 }
 
 .comment-footer > * {
@@ -13,6 +46,10 @@
 .comment-textarea {
   width: 100%;
   height: 100%;
+  resize: none;
+  border: 1px solid var(--moderate-blue);
+  border-radius: 8px;
+  font-family: var(--font-family);
 }
 
 .send-button {

@@ -6,7 +6,20 @@ import mapComments from "./mapComments.js";
   const appState = {
     selectedPostId: null,
     data: data,
+    renderBoxBorders: false,
   };
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key == ".") appState.renderBoxBorders = !appState.renderBoxBorders;
+    document.querySelectorAll(".card").forEach((card) => {
+      card.childNodes.forEach(
+        (node) =>
+          (node.style.border = appState.renderBoxBorders
+            ? "1px solid red"
+            : "none")
+      );
+    });
+  });
 
   mapComments(appState);
   getCommentFooter(appState);

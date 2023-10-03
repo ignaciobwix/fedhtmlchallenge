@@ -10,17 +10,23 @@ export default function getCommentFooter(appState) {
   } = appState.data.currentUser;
 
   const componentState = {
-    footer: createElement(
-      `<footer class="comment-footer component-container">
-        <img class="own-profile-picture" alt="${username}" src="${webp}" />
-      </footer>`
-    ),
-    textarea: createElement(
-      `<textarea class="comment-textarea" placeholder="Add a comment..."/>`
-    ),
-    button: createElement(
-      `<button type="button" class="send-button">Send</button>`
-    ),
+    footer: createElement(`
+      <footer class="comment-footer component-container">
+        <div class="profile-picture-area">
+          <img class="own-profile-picture" alt="${username}" src="${webp}" />
+        </div>
+      </footer>
+      `),
+    textarea: createElement(`
+      <div class="textarea-area">
+        <textarea class="comment-textarea" placeholder="Add a comment..."></textarea>
+      </div>
+      `),
+    button: createElement(`
+      <div class="send-button-area">
+        <button type="button" class="send-button">Send</button>
+      </div>
+      `),
     postTextContent: "",
   };
 
