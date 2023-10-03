@@ -1,5 +1,76 @@
 import {
   getActionsPanel,
+  getScorePanel,
+  getUserDetails,
+} from "./cardElements.js";
+
+import appendElements from "./appendElements.js";
+import createElement from "./createElement.js";
+
+export default function getCommentCard(comment, appState) {
+  const {
+    id,
+    content,
+    createdAt,
+    score,
+    user: {
+      image: { webp },
+      username,
+    },
+    replies,
+  } = comment;
+  const { currentUser } = appState.data;
+  const isCurrentUser = currentUser?.username === username;
+
+  const componentState = {
+    card: createElement(`<div class="card"></div>`),
+    commentHeader: createElement(`<div class="comment-header"></div>`),
+    actions: getActionsPanel(id, appState, isCurrentUser),
+    userSection: getUserDetails(username, webp, createdAt, isCurrentUser),
+    colWrapper: createElement(`<div></div>`),
+    commentContent: createElement(`<p class="text-content">${content}</p>`),
+    scorePanel: getScorePanel(score, id),
+    repliesContainer: null,
+  };
+
+  componentState.commentHeader = appendElements(componentState.commentHeader, [
+    componentState.userSection,
+    componentState.actions,
+  ]);
+
+  componentState.colWrapper = appendElements(componentState.colWrapper, [
+    componentState.commentHeader,
+    componentState.commentContent,
+  ]);
+
+  componentState.card = appendElements(componentState.card, [
+    componentState.scorePanel,
+    componentState.colWrapper,
+    // componentState.actions,
+  ]);
+
+  if (replies?.length) {
+    componentState.repliesContainer = createElement(
+      `<div class="replies-container"></div>`
+    );
+
+    document
+      .querySelector("#root")
+      .appendChild(componentState.repliesContainer);
+
+    replies.forEach((commentReply) => {
+      const wrapper = createElement(`<div class="component-container"></div>`);
+      wrapper.appendChild(getCommentCard(commentReply, appState));
+      componentState.repliesContainer.appendChild(wrapper);
+    });
+  }
+
+  return componentState.card;
+}
+
+/*
+import {
+  getActionsPanel,
   getCommentContent,
   getScorePanel,
   getUserDetails,
@@ -66,3 +137,4 @@ export default function getCommentCard(comment, appState) {
 
   return card;
 }
+*/

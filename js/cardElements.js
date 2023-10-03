@@ -96,10 +96,6 @@ export const getScorePanel = (initialScore, id) => {
   return container;
 };
 
-export const getCommentContent = (content) => {
-  return createElement(`<p class="text-content">${content}</p>`);
-};
-
 export const getUserDetails = (
   userName,
   userImage,
