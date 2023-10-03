@@ -1,7 +1,26 @@
 .comment-footer {
-  display: flex;
+  display: none;
   padding: 1rem;
   background-color: var(--very-light-gray);
   align-items: center;
   justify-content: space-between;
+}
+
+.comment-footer > * {
+  margin-right: 1rem;
+}
+
+.comment-textarea {
+  width: 100%;
+  height: 100%;
+}
+
+.send-button {
+  background: var(--moderate-blue);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.own-profile-picture {
+  width: 3rem;
 }

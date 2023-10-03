@@ -1,6 +1,9 @@
 .card {
+  display: flex;
   padding: 1rem;
   background-color: var(--very-light-gray);
+  border-radius: 8px;
+  width: 100%;
 }
 
 .comment-header {
@@ -11,17 +14,35 @@
 .user-details {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  width: -webkit-fill-available;
+}
+
+.user-details > * {
+  margin-right: 1rem;
+}
+
+.post-profile-picture {
+  width: 2rem;
+}
+
+.user-name {
+  color: var(--dark-blue);
+  font-size: 16px;
+}
+
+.time-stamp {
+  color: var(--grayish-blue);
+  font-size: 16px;
 }
 
 .score-container {
   display: flex;
   flex-direction: column;
-  /* align-content: center; */
-  justify-content: flex-start;
   align-items: center;
   background-color: var(--light-gray);
   border-radius: 4px;
+  width: 3rem;
+  margin-right: 1rem;
 }
 
 .score-button {
@@ -34,10 +55,6 @@
 
 .reply-button {
   color: var(--moderate-blue);
-}
-
-.details-row {
-  display: flex;
 }
 
 .text-content {

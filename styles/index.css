@@ -35,4 +35,19 @@ body {
   font-size: var(--body-font-size);
   font-weight: var(--font-weight-normal);
   background-color: var(--light-gray);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#root {
+  width: calc(100vw / 3);
+}
+
+@media screen and (max-width: 768px) {
+  #root {
+    width: 100%;
+  }
 }

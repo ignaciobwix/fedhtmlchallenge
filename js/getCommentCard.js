@@ -1,6 +1,13 @@
+import {
+  getCommentContent,
+  getReplyButton,
+  getScorePanel,
+  getUserDetails,
+} from "./cardElements.js";
+
 import createElement from "./createElement.js";
 
-export default function getCommentCard(comment, currentUser) {
+export default function getCommentCard(comment, appState) {
   const {
     id,
     content,
@@ -13,26 +20,26 @@ export default function getCommentCard(comment, currentUser) {
     replies,
   } = comment;
 
+  const { currentUser } = appState.data;
   const isCurrentUser = currentUser?.username === username;
 
   const commentHeader = createElement(`<div class="comment-header"></div>`);
-
-  const replyButton = getReplyButton(id);
+  const replyButton = getReplyButton(id, appState);
   const userSection = getUserDetails(username, webp, createdAt, isCurrentUser);
 
   commentHeader.appendChild(userSection);
   commentHeader.appendChild(replyButton);
 
-  const scorePanel = getScorePanel(score, id);
   const commentContent = getCommentContent(content);
-  const detailsRow = createElement(`<div class="details-row"></div>`);
+  const colWrapper = createElement(`<div></div>`);
+  colWrapper.appendChild(commentHeader);
+  colWrapper.appendChild(commentContent);
 
-  detailsRow.appendChild(scorePanel);
-  detailsRow.appendChild(commentHeader);
+  const scorePanel = getScorePanel(score, id);
 
   const card = createElement(`<div class="card"></div>`);
-  card.appendChild(detailsRow);
-  card.appendChild(commentContent);
+  card.appendChild(scorePanel);
+  card.appendChild(colWrapper);
 
   if (replies?.length) {
     const repliesContainer = createElement(
@@ -41,8 +48,8 @@ export default function getCommentCard(comment, currentUser) {
 
     document.querySelector("#root").appendChild(repliesContainer);
 
-    replies.forEach((rpl) => {
-      const child = getCommentCard(rpl, currentUser);
+    replies.forEach((commentReply) => {
+      const child = getCommentCard(commentReply, appState);
 
       const wrapper = createElement(`<div class="component-container"></div>`);
 
@@ -53,58 +60,3 @@ export default function getCommentCard(comment, currentUser) {
 
   return card;
 }
-
-const getUserDetails = (userName, userImage, timeStamp, isCurrentUser) => {
-  return createElement(`
-    <div class="user-details">
-        <img src=${userImage} alt=${userName}/>
-        <h3>${userName} ${isCurrentUser && "(you)"} </h3>
-        <span>${timeStamp}</span>
-    </div>`);
-};
-
-const getReplyButton = (id) => {
-  const button = createElement(`<button class="reply-button">reply</button>`);
-  button.addEventListener("click", () => {
-    alert(id);
-  });
-  return button;
-};
-
-const getScorePanel = (initialScore, id) => {
-  let score = initialScore;
-
-  const getButton = (operation) => {
-    const button = createElement(
-      `<button class="score-button">${
-        { sum: "+", sub: "-" }[operation]
-      }</button>`
-    );
-
-    button.addEventListener("click", () => {
-      const factor = operation === "sum" ? 1 : -1;
-      score = score + factor;
-      document.querySelector(`#score-${id}`).textContent = score;
-    });
-
-    return button;
-  };
-
-  const sumButton = getButton("sum");
-  const subButton = getButton("sub");
-  const scoreDisplay = createElement(
-    `<div class="score-value" id='score-${id}'>${initialScore}</div>`
-  );
-
-  const container = createElement(`<div class="score-container"></div>`);
-
-  container.appendChild(sumButton);
-  container.appendChild(scoreDisplay);
-  container.appendChild(subButton);
-
-  return container;
-};
-
-const getCommentContent = (content) => {
-  return createElement(`<div class="text-content">${content}</div>`);
-};
