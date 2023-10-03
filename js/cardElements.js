@@ -97,15 +97,15 @@ export const getScorePanel = (initialScore, id) => {
     `<div class="score-value" id='score-${id}'>${initialScore}</div>`
   );
 
-  const container = createElement(
-    `<div class="score-container score-area"></div>`
-  );
+  const scoreArea = createElement(`<div class="score-area"></div>`);
+
+  const container = createElement(`<div class="score-container"></div>`);
 
   container.appendChild(sumButton);
   container.appendChild(scoreDisplay);
   container.appendChild(subButton);
-
-  return container;
+  scoreArea.appendChild(container);
+  return scoreArea;
 };
 
 export const getUserDetails = (
