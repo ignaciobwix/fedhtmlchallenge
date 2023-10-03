@@ -11,14 +11,19 @@ import mapComments from "./mapComments.js";
 
   document.addEventListener("keydown", function (e) {
     if (e.key == ".") appState.renderBoxBorders = !appState.renderBoxBorders;
+
     document.querySelectorAll(".card").forEach((card) => {
       card.childNodes.forEach(
         (node) =>
           (node.style.border = appState.renderBoxBorders
-            ? "1px solid red"
-            : "none")
+            ? "1px dashed red"
+            : "1px solid transparent")
       );
     });
+
+    document.querySelector("#root").style.border = appState.renderBoxBorders
+      ? "1px solid green"
+      : "1px solid transparent";
   });
 
   mapComments(appState);

@@ -95,7 +95,7 @@
   align-items: center;
   background-color: var(--light-gray);
   border-radius: 16px;
-  width: 3rem;
+  width: 2.5rem;
   margin-right: 1rem;
   font-weight: bold;
   height: 80%;
@@ -126,6 +126,7 @@
 .action-button {
   font-weight: bold;
   color: var(--moderate-blue);
+  display: flex;
 }
 
 .delete-button {

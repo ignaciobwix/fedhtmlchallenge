@@ -8,20 +8,25 @@ export const getActionsPanel = (id, appState, isCurrentUser) => {
 
   if (isCurrentUser) {
     const editButton = createElement(
-      `<button class="action-button">Edit</button>`
+      `<button class="action-button">
+        <i class="fas fa-edit"></i>
+        <span>Edit</span>
+      </button>`
     );
     editButton.addEventListener("click", () => {
       appState.selectedPostId = id;
     });
 
     const deteleButton = createElement(
-      `<button class="action-button delete-button">Detele</button>`
+      `<button class="action-button delete-button">
+      <i class="fa-solid fa-trash"></i>        <span>Detele</span>
+      </button>`
     );
 
     deteleButton.addEventListener("click", function (event) {
       event.preventDefault();
       // !inline immutable chad chunk doens't work :/
-      alert("pressed");
+      // alert("pressed");
 
       // render({
       //   ...appState,
@@ -51,7 +56,10 @@ export const getActionsPanel = (id, appState, isCurrentUser) => {
   }
 
   const replyButton = createElement(
-    `<button class="action-button">Reply</button>`
+    `<button class="action-button">
+      <i class="fas fa-reply"></i>
+      <span>Reply</span>
+    </button>`
   );
 
   replyButton.addEventListener("click", () => {
