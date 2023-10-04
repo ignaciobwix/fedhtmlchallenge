@@ -1,6 +1,6 @@
 import createElement from "../lib/createElement.js";
 
-export const getActionsPanel = (id, appState, isCurrentUser) => {
+export function getActionsPanel(id, appState, isCurrentUser) {
   const actions = createElement(
     `<div class="post-actions actions-area"></div>`
   );
@@ -15,6 +15,12 @@ export const getActionsPanel = (id, appState, isCurrentUser) => {
 
     editButton.addEventListener("click", () => {
       appState.selectedPostId = id;
+      const content = document.querySelector(`#card-content-${id}`);
+      const paragraph = content.querySelector("p");
+      paragraph.style.display = "none";
+      const textarea = content.querySelector("textarea");
+      textarea.style.value = paragraph.textContent;
+      textarea.style.display = "block";
     });
 
     const deteleButton = createElement(
@@ -51,7 +57,7 @@ export const getActionsPanel = (id, appState, isCurrentUser) => {
   actions.appendChild(replyButton);
 
   return actions;
-};
+}
 
 export const getScorePanel = (initialScore, id) => {
   let score = initialScore;

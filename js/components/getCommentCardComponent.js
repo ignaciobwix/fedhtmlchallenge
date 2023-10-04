@@ -19,6 +19,7 @@ export default function getCommentCardComponent(comment, appState) {
     },
     replies,
   } = comment;
+
   const { currentUser } = appState.data;
   const isCurrentUser = currentUser?.username === username;
   const contentHasTag = content.startsWith("@");
@@ -31,7 +32,8 @@ export default function getCommentCardComponent(comment, appState) {
   };
 
   const componentState = {
-    idLabel: createElement(`<div class="id-label">
+    idLabel: createElement(`
+    <div class="id-label">
       <span>${id}</span>
     </div>`),
     card: createElement(`<div class="card card-comment-layout"></div>`),
@@ -41,14 +43,19 @@ export default function getCommentCardComponent(comment, appState) {
     actions: getActionsPanel(id, appState, isCurrentUser),
     userSection: getUserDetails(username, webp, createdAt, isCurrentUser),
     commentContent: createElement(
-      `<p class="text-content content-area">${
-        contentHasTag ? prependTag(content) : content
-      }</p>`
+      `
+      <div class="content-area" id="card-content-${id}">
+        <p class="text-content">
+          ${contentHasTag ? prependTag(content) : content}
+        </p>
+        ${isCurrentUser ? `<textarea class="edit-area"></textarea>` : ""}
+      </div>
+      `
     ),
     scorePanel: getScorePanel(score, id),
     repliesContainer: null,
   };
-  // !mmm extra node q puede estar en comment header fn
+
   componentState.commentHeader.appendChild(componentState.userSection);
 
   componentState.card = appendElements(componentState.card, [

@@ -182,3 +182,7 @@
 .child-padding {
   padding-left: 1rem;
 }
+
+.edit-area {
+  display: none;
+}

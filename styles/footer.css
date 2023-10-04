@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
 @media screen and (max-width: 768px) {
   .comment-footer-layout {
     display: grid;
@@ -19,7 +20,7 @@
     gap: 0px 0px;
     grid-template-areas:
       "textarea-area textarea-area textarea-area"
-      "profile-picture-area- gap send-button-area";
+      "profile-picture-area gap send-button-area";
   }
 }
 
@@ -33,6 +34,16 @@
   grid-area: textarea-area;
 }
 
+@media screen and (max-width: 768px) {
+  .textarea-area {
+    margin-bottom: 2rem;
+  }
+  .profile-picture-area {
+    height: auto;
+    align-self: flex-start;
+  }
+}
+
 .send-button-area {
   height: 100%;
   grid-area: send-button-area;
@@ -40,6 +51,12 @@
 
 .comment-footer-layout > * {
   margin-right: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .comment-footer-layout > * {
+    margin-right: 0;
+  }
 }
 
 .comment-textarea {
