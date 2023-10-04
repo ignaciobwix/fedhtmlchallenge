@@ -14,25 +14,32 @@
 
 .card {
   position: relative;
+  background-color: var(--very-light-gray);
+  border-radius: 8px;
+  height: 10vh;
+  padding: 1rem;
+  width: calc(100vw / 3);
+  margin-top: 16px;
+}
+
+.card-comment-layout {
   display: grid;
   grid-auto-columns: 1fr;
-  /* grid-template-columns: 0.5fr 2fr 0.5fr; */
   grid-template-columns: 10% 80% 10%;
   grid-template-rows: 0.5fr 1.5fr;
   gap: 0px 0px;
   grid-template-areas:
     "score-area header-area actions-area"
     "score-area content-area content-area";
-  background-color: var(--very-light-gray);
-  border-radius: 8px;
-  height: 10vh;
-  padding: 1rem;
-  max-width: calc(100vw / 3);
-  margin-top: 16px;
 }
 
 @media screen and (max-width: 768px) {
   .card {
+    height: fit-content;
+    max-width: 100%;
+  }
+
+  .card-comment-layout {
     display: grid;
     grid-auto-columns: 1fr;
     grid-template-columns: 1fr 1fr 1fr;
@@ -42,11 +49,6 @@
       "header-area header-area header-area"
       "content-area content-area content-area"
       "score-area gap actions-area";
-    height: fit-content;
-    max-width: 100%;
-  }
-  .card:first-child {
-    /* margin-top: 8rem; */
   }
 }
 
@@ -54,6 +56,12 @@
   grid-area: score-area;
   display: flex;
   justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .score-area {
+    align-items: center;
+  }
 }
 
 .header-area {

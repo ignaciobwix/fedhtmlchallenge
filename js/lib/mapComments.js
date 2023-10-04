@@ -1,14 +1,21 @@
+import appendElements from "./appendElements.js";
 import createElement from "./createElement.js";
-import getCommentCard from "../components/getCommentCard.js";
+import getCommentCardComponent from "../components/getCommentCardComponent.js";
 
 export default function mapComments(appState) {
   const { comments } = appState.data;
-
+  const commentsElement = document.querySelector("#comments");
   comments.forEach((comment) => {
-    // const container = createElement(`<div class="component-container"><div>`);
-    // container.appendChild(getCommentCard(comment, appState));
-    document
-      .querySelector("#comments")
-      .appendChild(getCommentCard(comment, appState));
+    const { card, repliesContainer } = getCommentCardComponent(
+      comment,
+      appState
+    );
+
+    if (repliesContainer) {
+      console.log("repliesContainer", repliesContainer);
+      appendElements(commentsElement, [card, repliesContainer]);
+    } else {
+      commentsElement.appendChild(card);
+    }
   });
 }

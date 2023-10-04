@@ -1,4 +1,4 @@
-.comment-footer {
+.comment-footer-layout {
   display: none;
   grid-auto-columns: 1fr;
   grid-template-columns: 10% 80% 10%;
@@ -9,10 +9,9 @@
   background-color: var(--very-light-gray);
   align-items: center;
   justify-content: space-between;
-  height: 10vh;
 }
 @media screen and (max-width: 768px) {
-  .comment-footer {
+  .comment-footer-layout {
     display: grid;
     grid-auto-columns: 1fr;
     grid-template-columns: 10% 80% 10%;
@@ -39,7 +38,7 @@
   grid-area: send-button-area;
 }
 
-.comment-footer > * {
+.comment-footer-layout > * {
   margin-right: 1rem;
 }
 

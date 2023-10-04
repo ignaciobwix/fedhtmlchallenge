@@ -39,6 +39,8 @@ export default function getModal(appState) {
       appState.data.comments
     );
 
+    componentState.dialog.close();
+
     render(appState);
   });
 
@@ -49,5 +51,5 @@ export default function getModal(appState) {
     [componentState.cancelButton, componentState.acceptButton]
   );
 
-  document.querySelector("#comments").appendChild(componentState.dialog);
+  document.querySelector("#root").appendChild(componentState.dialog);
 }

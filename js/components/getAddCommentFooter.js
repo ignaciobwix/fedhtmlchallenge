@@ -11,7 +11,7 @@ export default function getCommentFooter(appState) {
 
   const componentState = {
     footer: createElement(`
-      <footer class="comment-footer component-container">
+      <footer class="card comment-footer-layout">
         <div class="profile-picture-area">
           <img class="own-profile-picture" alt="${username}" src="${webp}" />
         </div>

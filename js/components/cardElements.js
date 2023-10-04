@@ -58,7 +58,7 @@ export const getActionsPanel = (id, appState, isCurrentUser) => {
 
   replyButton.addEventListener("click", () => {
     appState.selectedPostId = id;
-    document.querySelector(".comment-footer").style.display = "grid";
+    document.querySelector(".comment-footer-layout").style.display = "grid";
   });
 
   actions.appendChild(replyButton);
