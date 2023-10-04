@@ -12,4 +12,8 @@
   .replies-container {
     width: calc(100% - 1rem);
   }
+
+  .replies-container > .card {
+    width: calc(100% - 2rem);
+  }
 }

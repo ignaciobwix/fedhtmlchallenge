@@ -36,7 +36,7 @@
 @media screen and (max-width: 768px) {
   .card {
     height: fit-content;
-    max-width: 100%;
+    width: 100%;
   }
 
   .card-comment-layout {
@@ -172,6 +172,11 @@
 .text-content {
   color: var(--dark-blue);
   margin-top: 0.5rem;
+}
+
+.user-tag {
+  font-weight: bold;
+  color: var(--moderate-blue);
 }
 
 .child-padding {

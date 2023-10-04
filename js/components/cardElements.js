@@ -26,19 +26,6 @@ export const getActionsPanel = (id, appState, isCurrentUser) => {
 
     deteleButton.addEventListener("click", function (event) {
       event.preventDefault();
-      // !inline immutable chad chunk doens't work :/
-      // alert("pressed");
-
-      // render({
-      //   ...appState,
-      //   selectedPostId: id,
-      //   data: {
-      //     ...appState.data,
-      //     comments: appState.data.comments.filter(
-      //       (comment) => comment.id !== id
-      //     ),
-      //   },
-      // });
       appState.selectedPostId = id;
       document.querySelector("dialog").show();
     });

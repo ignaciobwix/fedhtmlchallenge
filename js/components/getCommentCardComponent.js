@@ -21,6 +21,14 @@ export default function getCommentCardComponent(comment, appState) {
   } = comment;
   const { currentUser } = appState.data;
   const isCurrentUser = currentUser?.username === username;
+  const contentHasTag = content.startsWith("@");
+
+  const prependTag = (content) => {
+    const strings = content.split(" ");
+    return `<span class="user-tag">${strings.shift()}</span> ${strings.join(
+      " "
+    )}`;
+  };
 
   const componentState = {
     idLabel: createElement(`<div class="id-label">
@@ -33,7 +41,9 @@ export default function getCommentCardComponent(comment, appState) {
     actions: getActionsPanel(id, appState, isCurrentUser),
     userSection: getUserDetails(username, webp, createdAt, isCurrentUser),
     commentContent: createElement(
-      `<p class="text-content content-area">${content}</p>`
+      `<p class="text-content content-area">${
+        contentHasTag ? prependTag(content) : content
+      }</p>`
     ),
     scorePanel: getScorePanel(score, id),
     repliesContainer: null,
