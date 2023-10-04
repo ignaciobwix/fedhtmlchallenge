@@ -1,22 +1,23 @@
 function deepCountPosts(comments) {
-  let count = 0;
+  if (!comments) return 0;
+  let count = comments?.length ?? 0;
 
-  if (comments) {
-    count += comments.length;
-
-    comments.forEach((comment) => {
+  comments.forEach((comment) => {
+    if (comment?.replies.length) {
       count += deepCountReplies(comment.replies);
-    });
-  }
+    }
+  });
 
   return count;
 }
 
 function deepCountReplies(replies) {
-  let count = replies.length;
+  if (!replies) return 0;
+
+  let count = replies?.length ?? 0;
 
   replies.forEach((reply) => {
-    count += deepCountReplies(reply.replies);
+    count += deepCountReplies(reply?.replies);
   });
 
   return count;

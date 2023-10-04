@@ -15,7 +15,7 @@ export default function postComment(event, postTextContent, appState) {
   const replies = comments[postIndex]?.replies || [];
 
   const newComment = {
-    id: Math.random(), //getNewPostId(comments),
+    id: getNewPostId(comments),
     content: postTextContent,
     createdAt: "now",
     score: 0,

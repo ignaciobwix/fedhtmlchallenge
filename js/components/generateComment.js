@@ -6,7 +6,12 @@ function generateRandomText() {
   return Math.random().toString(36).substring(2);
 }
 
-export default function generateComment(id, depth, maxDepth, maxReplies = 4) {
+export default function generateComment(
+  id,
+  depth = 0,
+  maxDepth = 0,
+  maxReplies = 4
+) {
   const comment = {
     id,
     content: generateRandomText(),
@@ -32,22 +37,3 @@ export default function generateComment(id, depth, maxDepth, maxReplies = 4) {
 
   return comment;
 }
-
-// function generateCommentThread() {
-//   const maxDepth = 3; // Maximum depth of nested comments
-//   const maxReplies = 4;
-//   const commentThread = {
-//     currentUser: {
-//       image: {
-//         png: "./images/avatars/image-juliusomo.png",
-//         webp: "./images/avatars/image-juliusomo.webp",
-//       },
-//       username: "juliusomo",
-//     },
-//     comments: [generateComment(1, "juliusomo", 0, maxDepth, maxReplies)],
-//   };
-
-//   return JSON.stringify(commentThread, null, 2);
-// }
-
-// console.log(generateCommentThread());
