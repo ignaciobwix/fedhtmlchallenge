@@ -1,11 +1,13 @@
-import getCommentFooter from "./components/getAddCommentFooter.js";
-import getCommentsStateConsole from "./components/getCommentsStateConsole.js";
-import getModal from "./components/getModal.js";
+import {
+  debugCards,
+  debugThreadsContainer,
+  displayCommentsReadableStructure,
+} from "./helper/elementsDebuggerHelper.js";
+
 import getPosts from "./services/getPosts.js";
-import mapComments from "./lib/mapComments.js";
+import render from "./render.js";
 
 (async function () {
-  // const data = await (await fetch("../data.json")).json();
   const appState = {
     selectedPostId: null,
     data: await getPosts(),
@@ -15,29 +17,12 @@ import mapComments from "./lib/mapComments.js";
   document.addEventListener("keydown", function (e) {
     if (e.key == ".") appState.debugFrontend = !appState.debugFrontend;
 
-    document.querySelectorAll(".card-comment-layout").forEach((card) => {
-      card.querySelector(".id-label").style.display = appState.debugFrontend
-        ? "flex"
-        : "none";
-
-      card.childNodes.forEach(
-        (node) =>
-          (node.style.border = appState.debugFrontend
-            ? "1px dashed red"
-            : "1px solid transparent")
-      );
-    });
-
-    document.querySelector("#comments").style.border = appState.debugFrontend
-      ? "1px solid green"
-      : "1px solid transparent";
-
-    document.querySelector("#comments-state-console").style.display =
-      appState.debugFrontend ? "flex" : "none";
+    [
+      debugCards,
+      debugThreadsContainer,
+      displayCommentsReadableStructure,
+    ].forEach((fn) => fn(appState.debugFrontend));
   });
 
-  getModal(appState);
-  mapComments(appState);
-  getCommentFooter(appState);
-  getCommentsStateConsole(appState);
+  render(appState);
 })();
