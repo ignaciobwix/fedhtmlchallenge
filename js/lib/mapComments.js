@@ -11,7 +11,6 @@ export default function mapComments(appState) {
     );
 
     if (repliesContainer) {
-      console.log("repliesContainer", repliesContainer);
       appendElements(commentsElement, [card, repliesContainer]);
     } else {
       commentsElement.appendChild(card);

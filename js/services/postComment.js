@@ -1,3 +1,4 @@
+import deepFindCommentIndex from "../lib/deepFindCommentIndex.js";
 import getNewPostId from "../lib/getNewPostId.js";
 import render from "../render.js";
 
@@ -8,9 +9,7 @@ export default function postComment(event, postTextContent, appState) {
   const { data, selectedPostId } = appState;
   const comments = data.comments;
 
-  const postIndex = comments.findIndex(
-    (comment) => comment.id === selectedPostId
-  );
+  const postIndex = deepFindCommentIndex(comments, "id", selectedPostId);
 
   const replies = comments[postIndex]?.replies || [];
 
