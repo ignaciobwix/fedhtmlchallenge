@@ -1,0 +1,41 @@
+/* move to file */
+.modal {
+  max-width: calc(100vw / 3 / 2);
+  height: calc(100vh / 6);
+  border: none;
+  border-radius: 8px;
+}
+
+.dialog-title {
+  color: var(--dark-blue);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.dialog-content {
+  margin-top: 16px;
+  color: var(--grayish-blue);
+}
+
+.dialog-buttons {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dialog-button {
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--white);
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+.dialog-cancel-button {
+  background: var(--grayish-blue);
+}
+
+.dialog-delete-button {
+  background: var(--soft-red);
+}

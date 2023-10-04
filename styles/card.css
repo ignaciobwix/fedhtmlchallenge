@@ -1,4 +1,19 @@
+.id-label {
+  display: none;
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  border-radius: 50%;
+  color: var(--white);
+  background: var(--dark-blue);
+  height: 24px;
+  width: 24px;
+  justify-content: center;
+  align-items: center;
+}
+
 .card {
+  position: relative;
   display: grid;
   grid-auto-columns: 1fr;
   /* grid-template-columns: 0.5fr 2fr 0.5fr; */
@@ -12,6 +27,8 @@
   border-radius: 8px;
   height: 10vh;
   padding: 1rem;
+  max-width: calc(100vw / 3);
+  margin-top: 16px;
 }
 
 @media screen and (max-width: 768px) {
@@ -26,6 +43,10 @@
       "content-area content-area content-area"
       "score-area gap actions-area";
     height: fit-content;
+    max-width: 100%;
+  }
+  .card:first-child {
+    /* margin-top: 8rem; */
   }
 }
 

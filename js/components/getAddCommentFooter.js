@@ -40,5 +40,5 @@ export default function getCommentFooter(appState) {
 
   componentState.footer.appendChild(componentState.textarea);
   componentState.footer.appendChild(componentState.button);
-  document.querySelector("#root").appendChild(componentState.footer);
+  document.querySelector("#comments").appendChild(componentState.footer);
 }

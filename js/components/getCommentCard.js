@@ -23,6 +23,9 @@ export default function getCommentCard(comment, appState) {
   const isCurrentUser = currentUser?.username === username;
 
   const componentState = {
+    idLabel: createElement(`<div class="id-label">
+      <span>${id}</span>
+    </div>`),
     card: createElement(`<div class="card"></div>`),
     commentHeader: createElement(
       `<div class="comment-header header-area"></div>`
@@ -60,17 +63,20 @@ export default function getCommentCard(comment, appState) {
     );
 
     document
-      .querySelector("#root")
+      .querySelector("#comments")
       .appendChild(componentState.repliesContainer);
 
     replies.forEach((commentReply) => {
-      const wrapper = createElement(`<div class="component-container"></div>`);
-      wrapper.appendChild(getCommentCard(commentReply, appState));
-      componentState.repliesContainer.appendChild(wrapper);
+      // const wrapper = createElement(`<div class="component-container"></div>`);
+      // wrapper.appendChild(getCommentCard(commentReply, appState));
+      componentState.repliesContainer.appendChild(
+        getCommentCard(commentReply, appState)
+      );
     });
   }
 
   componentState.card = appendElements(componentState.card, [
+    componentState.idLabel,
     componentState.scorePanel,
     componentState.commentHeader,
     componentState.actions,
@@ -134,7 +140,7 @@ export default function getCommentCard(comment, appState) {
       `<div class="replies-container"></div>`
     );
 
-    document.querySelector("#root").appendChild(repliesContainer);
+    document.querySelector("#comments").appendChild(repliesContainer);
 
     replies.forEach((commentReply) => {
       const child = getCommentCard(commentReply, appState);

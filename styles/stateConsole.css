@@ -1,0 +1,22 @@
+#comments-state-console {
+  display: none;
+  color: var(--white);
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.chunk {
+  margin-right: 4px;
+  background-color: var(--dark-blue);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.r {
+  margin-right: 4px;
+}
+
+.d {
+  margin-right: 4px;
+}
