@@ -48,7 +48,11 @@ export default function getCommentCardComponent(comment, appState) {
         <p class="text-content">
           ${contentHasTag ? prependTag(content) : content}
         </p>
-        ${isCurrentUser ? `<textarea class="edit-area"></textarea>` : ""}
+        ${
+          isCurrentUser
+            ? `<textarea class="edit-area"></textarea><button class="send-button update-content-button">Send</button>`
+            : ""
+        }
       </div>
       `
     ),

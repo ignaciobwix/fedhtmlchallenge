@@ -1,4 +1,5 @@
 import createElement from "../lib/createElement.js";
+import { editCommentHandler } from "../helper/cardElementsHelper.js";
 
 export function getActionsPanel(id, appState, isCurrentUser) {
   const actions = createElement(
@@ -15,12 +16,7 @@ export function getActionsPanel(id, appState, isCurrentUser) {
 
     editButton.addEventListener("click", () => {
       appState.selectedPostId = id;
-      const content = document.querySelector(`#card-content-${id}`);
-      const paragraph = content.querySelector("p");
-      paragraph.style.display = "none";
-      const textarea = content.querySelector("textarea");
-      textarea.style.value = paragraph.textContent;
-      textarea.style.display = "block";
+      editCommentHandler(id);
     });
 
     const deteleButton = createElement(

@@ -80,6 +80,7 @@
 
 .content-area {
   grid-area: content-area;
+  display: flex;
 }
 
 .comment-header {
@@ -185,4 +186,11 @@
 
 .edit-area {
   display: none;
+  width: -webkit-fill-available;
+  resize: none;
+}
+
+.update-content-button {
+  display: none;
+  margin-left: 4px;
 }
