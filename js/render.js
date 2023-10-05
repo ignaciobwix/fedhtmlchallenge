@@ -4,9 +4,18 @@ import getModal from "./components/getModal.js";
 import mapComments from "./lib/mapComments.js";
 
 export default function render(appState) {
-  document.querySelector("#comments").innerHTML = "";
+  const comments = document.querySelector("#comments");
+  comments.innerHTML = "";
 
   [getModal, mapComments, getCommentFooter, getCommentsStateConsole].forEach(
     (component) => component(appState)
   );
+
+  if (comments.lastChild) {
+    comments.lastChild.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+      inline: "nearest",
+    });
+  }
 }

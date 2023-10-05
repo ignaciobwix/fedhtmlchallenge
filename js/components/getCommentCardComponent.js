@@ -76,8 +76,15 @@ export default function getCommentCardComponent(comment, appState) {
     );
 
     replies.forEach((commentReply) => {
+      const nestedComponentState = getCommentCardComponent(
+        commentReply,
+        appState
+      );
+
       componentState.repliesContainer.appendChild(
-        getCommentCardComponent(commentReply, appState).card
+        nestedComponentState.repliesContainer
+          ? nestedComponentState.repliesContainer
+          : nestedComponentState.card
       );
     });
   }
