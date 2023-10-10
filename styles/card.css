@@ -25,7 +25,7 @@
 .card-comment-layout {
   display: grid;
   grid-auto-columns: 1fr;
-  grid-template-columns: 10% 80% 10%;
+  grid-template-columns: 10% 1fr min-content;
   grid-template-rows: 0.5fr 1.5fr;
   gap: 0px 0px;
   grid-template-areas:

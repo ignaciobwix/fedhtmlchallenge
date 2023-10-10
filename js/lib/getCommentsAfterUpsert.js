@@ -1,3 +1,6 @@
+// todo: change to iterative traversal to avoid callstack overflow.
+// todo: const stack = [...comments] ... current.replies ? stack = stack.concat(current.replies);
+
 export default function getCommentsAfterUpsert(
   comments,
   id,

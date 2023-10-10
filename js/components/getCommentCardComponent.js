@@ -80,7 +80,7 @@ export default function getCommentCardComponent(comment, appState) {
         commentReply,
         appState
       );
-
+      // se renderiza el container, pero no el hijo
       componentState.repliesContainer.appendChild(
         nestedComponentState.repliesContainer
           ? nestedComponentState.repliesContainer
@@ -91,3 +91,36 @@ export default function getCommentCardComponent(comment, appState) {
 
   return componentState;
 }
+
+/*
+const appendReplies = (repliesToMap) => {
+    if (repliesToMap?.length) {
+      componentState.repliesContainer = createElement(
+        `<div class="replies-container"></div>`
+      );
+
+      repliesToMap.forEach((commentReply) => {
+        const nestedComponentState = getCommentCardComponent(
+          commentReply,
+          appState
+        );
+
+        if (nestedComponentState.repliesContainer) {
+          componentState.repliesContainer.appendChild(
+            nestedComponentState.repliesContainer
+          );
+        } else {
+          componentState.repliesContainer.appendChild(
+            nestedComponentState.card
+          );
+
+          if (nestedComponentState.card.repliesContainer) {
+            appendReplies(nestedComponentState.card.repliesContent);
+          }
+        }
+      });
+    }
+  };
+
+  appendReplies(replies);
+*/
